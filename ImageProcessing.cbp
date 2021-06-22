@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ImageProcessing" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ImageProcessing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="C:/opencv-4.5.2/build/install/include" />
+					<Add directory="C:/opencv-4.5.2/build/install/include/opencv2" />
+					<Add directory="C:/opencv-4.5.2/build/include" />
+				</Compiler>
+				<Linker>
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_calib3d452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_core452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_features2d452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_flann452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_gapi452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_highgui452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_imgcodecs452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_imgproc452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_ml452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_objdetect452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_photo452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_stitching452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_video452.dll.a" />
+					<Add library="C:/opencv-4.5.2/build/install/x64/mingw/lib/libopencv_videoio452.dll.a" />
+					<Add directory="C:/opencv-4.5.2/build/install/x64/mingw/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ImageProcessing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="ceSerial.cpp" />
+		<Unit filename="ceSerial.h" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
