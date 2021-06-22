@@ -47,9 +47,8 @@
 #define relay1 49
 #define relay2 51
 
-#define p_servo1 52
-#define p_servo2 38
-#define p_servo3 48
+#define p_servo1 38
+#define p_servo2 40
 
 Servo servo1, servo2, servo3;
 Psx Psx;                                                  // Initializes the library
@@ -237,34 +236,41 @@ void loop()
       servo3.write(servo3.read() - 2);
     }
   }
-
-  if(data == 8704){
-    Serial.println("Servo elevator maju ke depan");
+ 
+  }
+	if(data == 8704){ //L1 + X
+    Serial.println("Servo elevator melepas panah");
     Serial.print(servo1.read());
-    Serial.print(" | ");
-    Serial.print(servo2.read());
-    Serial.println("");
-    
+            
     if(servo1.read() > 0){
       servo1.write(servo1.read() - 2);
     }
-    if(servo2.read() < 180){
+  }
+
+  if (data == 8448) { //L1 + Kotak
+    Serial.println("Servo Elevator memutar ke belakang");
+    Serial.print(servo2.read());
+
+    if (servo2.read() < 180) {
       servo2.write(servo2.read() + 2);
     }
+
   }
   
-  if(data == 9216){
-    Serial.println("Servo elevator mundur ke belakang");
-    Serial.print(servo1.read());
-    Serial.print(" | ");
-    Serial.print(servo2.read());
-    Serial.println("");
+   if (data == 10240){ //L1 + Segitiga
+      Serial.println("Servo Elevator memutar ke depan");
+      Serial.print(servo2.read());
 
+      if (servo2.read() > 0){
+        servo2.write(servo2.read() - 2);
+      }
+  }
+  if(data == 9216){ //L1 + O
+    Serial.println("Servo elevator menjepit panah");
+    Serial.print(servo1.read());
+   
     if(servo1.read() < 180){
       servo1.write(servo1.read() + 2);
-    }
-    if(servo2.read() > 0){
-      servo2.write(servo2.read() - 2);
     }
   }
 
