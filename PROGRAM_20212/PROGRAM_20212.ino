@@ -47,19 +47,21 @@ LiquidCrystal_I2C lcd(0x3f, 16, 2); //sets the LCD I2C communication address; fo
 //Pneumatic
 #define relay1 49
 #define relay2 51
+#define relay3 47
+#define relay4 46
+#define relay5 45
+#define relay6 44
+#define relay7 43
 
 //servo
 #define p_servo1 38
-#define p_servo2 40
 
 #define p_servo3 42
-#define p_servo4 46
 
 #define p_servo5 48
-#define p_servo6 50
 
 
-Servo servo1, servo2, servo3, servo4, servo5, servo6;
+Servo servo1, servo3, servo5;
 
 //timing
 int integral = 0;
@@ -77,8 +79,18 @@ void setup()
   //Pneumatic
   pinMode(relay1, OUTPUT);
   pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);
+  pinMode(relay4, OUTPUT);
+  pinMode(relay5, OUTPUT);
+  pinMode(relay6, OUTPUT);
+  pinMode(relay7, OUTPUT);
   digitalWrite(relay1, HIGH);
   digitalWrite(relay2, HIGH);
+  digitalWrite(relay3, HIGH);
+  digitalWrite(relay4, HIGH);
+  digitalWrite(relay5, HIGH);
+  digitalWrite(relay6, HIGH);
+  digitalWrite(relay7, HIGH);
 
   //Motor
   pinMode(pwm_kiri_atas1, OUTPUT);
@@ -95,18 +107,13 @@ void setup()
 
   //Servo
   servo1.attach(p_servo1);
-  servo2.attach(p_servo2);
   servo3.attach(p_servo3);
-  servo4.attach(p_servo4);
   servo5.attach(p_servo5);
-  servo6.attach(p_servo6);
-  
+    
   servo1.write(90);
-  servo2.write(90);
   servo3.write(90);
-  servo4.write(90);
   servo5.write(90);
-  servo6.write(90);
+  
   
   Serial.begin(9600);
 
@@ -263,19 +270,54 @@ void loop()
   }
 
 
-  if(data == 4608){
+  if(data == 6144){ //R1 + Segitiga
     Serial.println("pelempar 1");
     digitalWrite(relay1, LOW);
   }else{
     digitalWrite(relay1, HIGH);
   }
 
-  if(data == 5120){
+  if(data == 5120){ //R1 + O
     Serial.println("pelempar 2");
     digitalWrite(relay2, LOW);
   }else{
     digitalWrite(relay2, HIGH);
   }
+
+  if(data == 4608){ //R1 + X
+    Serial.println("pelempar 3");
+    digitalWrite(relay3, LOW);
+  }else{
+    digitalWrite(relay3, HIGH);
+  } 
+
+   if(data == 16640){ //R2 + Kotak
+    Serial.println("Tangan Turun");
+    digitalWrite(relay4, LOW);
+  }else{
+    digitalWrite(relay4, HIGH);
+  } 
+
+   if(data == 18432){ //R2 + Segitiga
+    Serial.println("Tangan Naik");
+    digitalWrite(relay5, LOW);
+  }else{
+    digitalWrite(relay5, HIGH);
+  } 
+  
+  if(data == 17408){ //R2 + O
+    Serial.println("Sudut ke posisi tembak");
+    digitalWrite(relay6, LOW);
+  }else{
+    digitalWrite(relay6, HIGH);
+  } 
+
+  if(data == 16896){ //R2 + X
+    Serial.println("Sudut ke posisi normal (lurus)");
+    digitalWrite(relay7, LOW);
+  }else{
+    digitalWrite(relay7, HIGH);
+  } 
 
 
   if(data == 8){
