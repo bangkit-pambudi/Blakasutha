@@ -235,22 +235,22 @@ void loop()
             
     if(servo1.read() > 0 ){
       servo1.write(servo1.read() - 2);
-      servo2.write(servo2.read() - 2);
       servo3.write(servo3.read() - 2);
+      servo5.write(servo5.read() - 2);
     }
   }
 
   if (data == 8448) { //L1 + Kotak
     Serial.println("Servo Elevator memutar ke belakang");
-    digitalWrite(roller_pwm1, HIGH);
-    digitalWrite(roller_pwm2, LOW);
+    analogWrite(roller_pwm1, 60);
+    analogWrite(roller_pwm2, 0);
   }else if (data == 10240){ //L1 + Segitiga
     Serial.println("Servo Elevator memutar ke depan");
-    digitalWrite(roller_pwm1, LOW);
-    digitalWrite(roller_pwm2, HIGH);  
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 60);  
   } else {
-    digitalWrite(roller_pwm1, LOW);
-    digitalWrite(roller_pwm2, LOW);}
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 0);}
   
   
   if(data == 9216){ //L1 + O
