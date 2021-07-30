@@ -1,5 +1,5 @@
 void Gripper(){
-if(ps2x.Button(PSB_L1) && ps2x.Button(PSB_CROSS)){ //L1 + X
+if(ps2x.Button(PSB_L2) && ps2x.Button(PSB_CROSS)){ //L2 + X
     Serial.println("Servo elevator melepas panah");
     Serial.print(servo1.read());
     Serial.print("||");
@@ -14,7 +14,7 @@ if(ps2x.Button(PSB_L1) && ps2x.Button(PSB_CROSS)){ //L1 + X
       servo5.write(servo5.read() - 2);
     }
   }
-   if(ps2x.Button(PSB_L1) && ps2x.Button(PSB_CIRCLE)){ //L1 + O
+   if(ps2x.Button(PSB_L2) && ps2x.Button(PSB_CIRCLE)){ //L2 + O
     Serial.println("Servo elevator menjepit panah");
     Serial.print(servo1.read());
     Serial.print("||");
