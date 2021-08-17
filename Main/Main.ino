@@ -16,6 +16,7 @@ PS2X ps2x; // create PS2 Controller Class
 int error = 0;
 byte type = 0;
 byte vibrate = 0;
+int titit;
 
 //Pressure Sensor
 const int pressureInput = A0; //select the analog input pin for the pressure transducer
