@@ -8,10 +8,10 @@
 //==============PIN==============
 //**************Input************* 
 //PS2X 
-#define PS2_DAT        22  //14    
-#define PS2_CMD        24  //15
-#define PS2_SEL        26  //16
-#define PS2_CLK        28  //17
+#define PS2_DAT        23  //14    
+#define PS2_CMD        25  //15
+#define PS2_SEL        27  //16
+#define PS2_CLK        29  //17
 
 PS2X ps2x; // create PS2 Controller Class
 int error = 0;
@@ -62,20 +62,14 @@ const int pwm_speed = 160;
 #define shooter_pwm2 12
 
 //Pneumatic
-#define relay1 30
-#define relay2 32
-#define relay3 34
-#define relay4 36
-#define relay5 38
-#define relay6 40
-#define relay7 42
+#define relay1 40
+#define relay2 42
+#define relay3 44
+#define relay4 46
+#define relay5 48
+#define relay6 50
+#define relay7 52
 
-//servo
-#define p_servo1 23
-#define p_servo3 25
-#define p_servo5 27
-
-Servo servo1, servo3, servo5;
 
 //timing
 int integral = 0;
@@ -133,15 +127,6 @@ void setup() {
   digitalWrite(relay6, HIGH);
   digitalWrite(relay7, HIGH);
 
-  //Servo
-  servo1.attach(p_servo1);
-  servo3.attach(p_servo3);
-  servo5.attach(p_servo5);
-    
-  servo1.write(90);
-  servo3.write(90);
-  servo5.write(90);
-
   //LCD
   lcd.init(); //initializes the LCD screen
   lcd.backlight();
@@ -152,9 +137,6 @@ void loop() {
   // put your main code here, to run repeatedly:
   
   ps2x.read_gamepad(false, vibrate);
-  
-  nJoyX = ps2x.Analog(PSS_LX);
-  nJoyX = map(nJoyX, 0, 255, -1023, 1023);
     
   if(integral < pwm_speed){
     integral+= 5;

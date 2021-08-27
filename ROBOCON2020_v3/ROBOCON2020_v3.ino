@@ -206,7 +206,7 @@ void setup() {
   digitalWrite(IR2, HIGH);
 
   //LCD
-  lcd.begin();
+  lcd.init();
   lcd.backlight();
 }
 

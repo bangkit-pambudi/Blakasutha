@@ -187,17 +187,28 @@ void setup() {
   lcd.backlight();
 
 }
+int i;
 
 void loop() {
   currentmillis = millis();
   if (currentmillis - prevmillis >= inputrate) {
+
+    for(i = 0;i<=360;i++)
+    {
+      setpointC = i;
+    }
      
     ReadInput();
     
     /*if(integral < pwm_speed){
       integral+= 5;
     }*/
-    Serial.println(stickW);
+    Serial.print(C);
+    Serial.print(" || ");
+    Serial.print(errorC);
+    Serial.print(" || ");
+    Serial.print(stickW);
+    Serial.println(" ");
 
     //Gripper();
     //Lengan();
