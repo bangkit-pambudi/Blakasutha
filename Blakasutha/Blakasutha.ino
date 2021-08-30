@@ -56,20 +56,18 @@ const int pwm_speed = 160;
 #define roller_pwm1 10
 #define roller_pwm2 11
 
+//Pneumatic Shooter
+#define relay1 48
+#define relay2 44
+#define relay3 46
 
-//Motor Pelontar
-#define shooter_pwm1 13
-#define shooter_pwm2 12
+//Pneumatic Atas
+#define relay4 44
+#define relay5 42
 
-//Pneumatic
-#define relay1 40
-#define relay2 42
-#define relay3 44
-#define relay4 46
-#define relay5 48
-#define relay6 50
-#define relay7 52
-
+//Pneumatic Bawah
+#define relay6 40
+#define relay7 38
 
 //timing
 int integral = 0;
@@ -83,11 +81,11 @@ void setup() {
   error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);
 
   //Encoder
+  delay(300);
   pinMode (SS1, OUTPUT);
   SPI.begin();
   SPI.setClockDivider(SPI_CLOCK_DIV8);
   digitalWrite(SS1, HIGH);
-  delay(300);
   
   //Motor
   delay(300);
@@ -104,11 +102,6 @@ void setup() {
   delay(300);
   pinMode(roller_pwm1, OUTPUT);
   pinMode(roller_pwm2, OUTPUT);
-
-  //Motor Pelontar
-  delay(300);
-  pinMode(shooter_pwm1, OUTPUT);
-  pinMode(shooter_pwm2, OUTPUT);
 
   //Pneumatic
   delay(300);
@@ -139,13 +132,13 @@ void loop() {
   ps2x.read_gamepad(false, vibrate);
     
   if(integral < pwm_speed){
-    integral+= 5;
+    integral+= 10;
   }
   //Serial.println(ps2x.Analog(PSS_RX));
 
   ReadInput();
-  Gripper();
-  Lengan();
+  Pneumatic_Atas();
+  Pneumatic_Bawah();
   Pelempar();
   MoveRobot();
   delay(10);

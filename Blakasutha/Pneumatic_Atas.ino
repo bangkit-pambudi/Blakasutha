@@ -1,4 +1,4 @@
-void Gripper(){
+void Pneumatic_Atas(){
 if(ps2x.Button(PSB_L2)){
   if(ps2x.Button(PSB_SQUARE)){
     Serial.println("Sudut 60 derajat");

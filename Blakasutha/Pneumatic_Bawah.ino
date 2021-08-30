@@ -1,4 +1,4 @@
-void Lengan(){
+void Pneumatic_Bawah(){
 if(ps2x.Button(PSB_R2)){
  if(ps2x.Button(PSB_SQUARE)){ //R2 + Kotak
     Serial.println("Tangan Turun");

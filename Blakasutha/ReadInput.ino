@@ -7,7 +7,7 @@ void ReadInput (){
   digitalWrite(SS1, LOW);
   PosX = SPI.transfer(0);
   digitalWrite(SS1, HIGH);
-  X += PosX;
+  //X += PosX;
 
   lcd.setCursor(0,0); 
   lcd.print(pressureValue); 
