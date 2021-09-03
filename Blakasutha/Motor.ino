@@ -79,3 +79,11 @@ void check_integral( int data){
     integral = 0;
   }
 }
+
+void Stop(){
+  reset_kiri_atas();
+  reset_kiri_bawah();
+  reset_kanan_bawah();
+  reset_kanan_atas();
+  integral = 0;
+}

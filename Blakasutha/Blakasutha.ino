@@ -17,19 +17,18 @@ PS2X ps2x; // create PS2 Controller Class
 int error = 0;
 byte type = 0;
 byte vibrate = 0;
-int nJoyX;
+int mode = 0;
 
 int pwm_tangan;
 //Pressure Sensor
-const int pressureInput = A0; //select the analog input pin for the pressure transducer
-const int pressureInput1 = A0; //select the analog input pin for the pressure transducer
-const int pressureZero = 102.4; //analog reading of pressure transducer at 0psi
-const int pressureMax = 921.6; //analog reading of pressure transducer at 100psi
-const int pressuretransducermaxPSI = 100; //psi value of transducer being used
-const int baudRate = 9600; //constant integer to set the baud rate for serial monitor
-const int sensorreadDelay = 250; //constant integer to set the sensor read delay in milliseconds
-float pressureValue = 0; //variable to store the value coming from the pressure transducer
-float pressureValue1 = 0; //variable to store the value coming from the pressure transducer
+const int pressureInput = A0; 
+const int pressureInput1 = A1; 
+const int pressureZero = 102.4; 
+const int pressureMax = 921.6; 
+const int pressuretransducermaxPSI = 100; 
+const int sensorreadDelay = 250; 
+float pressureValue = 0; 
+float pressureValue1 = 0; 
 
 //ENCODER
 const int SS1 = 41;
@@ -69,9 +68,15 @@ const int pwm_speed = 160;
 #define relay6 40
 #define relay7 38
 
-//timing
+//**********************TIMINGS************************//
 int integral = 0;
 int tmp_data = 0;
+unsigned long currentmillis;
+unsigned long prevmillis = 0;
+int inputrate = 50;
+int lcdratemultiplier = 3;
+int lcdcount = 0;
+float elapsedtime = (float)inputrate / 1000;
 
 void setup() {
 
@@ -127,19 +132,10 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  
-  ps2x.read_gamepad(false, vibrate);
-    
-  if(integral < pwm_speed){
-    integral+= 10;
-  }
-  //Serial.println(ps2x.Analog(PSS_RX));
-
-  ReadInput();
-  Pneumatic_Atas();
-  Pneumatic_Bawah();
-  Pelempar();
-  MoveRobot();
-  delay(10);
+  currentmillis = millis();
+  if (currentmillis - prevmillis >= inputrate) {
+    MainMenu();
+    ReadInput();
+    prevmillis = currentmillis;
+  }    
 }
