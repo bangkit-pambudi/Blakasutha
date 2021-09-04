@@ -16,5 +16,10 @@ void Manual(){
     lcdcount = 0;
   }
   lcdcount++;
+
+  PneumaticAtas();
+  PneumaticBawah();
+  Pelempar();
+  MoveRobot();
   
 }

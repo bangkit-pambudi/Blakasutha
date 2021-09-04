@@ -38,6 +38,18 @@ int8_t PosX = 0;
 //LCD
 LiquidCrystal_I2C lcd(0x3f, 16, 2); //sets the LCD I2C communication address; format(address, columns, rows)
 
+//LIMIT SWITCH
+const int LS1 = 31;
+const int LS2 = 33;
+const int LS3 = 35;
+const int LS4 = 37;
+const int LS5 = 39;
+int ls1 = LOW;
+int ls2 = LOW;
+int ls3 = LOW;
+int ls4 = LOW;
+int ls5 = LOW;
+
 
 //***************Output**************
 //Motor DC
@@ -124,6 +136,14 @@ void setup() {
   digitalWrite(relay5, HIGH);
   digitalWrite(relay6, HIGH);
   digitalWrite(relay7, HIGH);
+
+  //LIMIT SWITCH
+  delay(300);
+  pinMode(LS1, INPUT_PULLUP);
+  pinMode(LS2, INPUT_PULLUP);
+  pinMode(LS3, INPUT_PULLUP);
+  pinMode(LS4, INPUT_PULLUP);
+  pinMode(LS5, INPUT_PULLUP);
 
   //LCD
   lcd.init(); //initializes the LCD screen
