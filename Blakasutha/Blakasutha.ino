@@ -18,6 +18,8 @@ int error = 0;
 byte type = 0;
 byte vibrate = 0;
 int mode = 0;
+int Delay = 50;
+int Pot = 0;
 
 int pwm_tangan;
 //Pressure Sensor
