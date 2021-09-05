@@ -19,10 +19,10 @@ void Aim(){
 
   if(ps2x.Button(PSB_R1)){
     if(ps2x.Button(PSB_PAD_UP)){
-      Delay++;  
+      Delay += 10;  
     }
     if(ps2x.Button(PSB_PAD_DOWN)){
-      Delay--;
+      Delay -= 10;
     }
     if(ps2x.Button(PSB_PAD_LEFT)){
       Pot++;  

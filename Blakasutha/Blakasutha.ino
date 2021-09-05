@@ -21,7 +21,7 @@ int mode = 0;
 int Delay = 50;
 int Pot = 0;
 
-int pwm_tangan;
+int pwm_tangan = 60;
 //Pressure Sensor
 const int pressureInput = A0; 
 const int pressureInput1 = A1; 
