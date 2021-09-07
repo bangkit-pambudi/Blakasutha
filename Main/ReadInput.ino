@@ -1,22 +1,28 @@
 void ReadInput (){
+  //psx
+  ps2x.read_gamepad(false, 0);
 
   //pneumatic sensor
   pressureValue = PressureSensor(analogRead(pressureInput)); 
   pressureValue1 = PressureSensor(analogRead(pressureInput1)); 
+
+  mpu6050.update();
+  headingDegrees = mpu6050.getAngleZ();
+  driftDegrees += driftrate;
+  C = headingDegrees - offsetDegrees - driftDegrees;
+
+  if (C < 0)
+    C += 360;
+  if (C > 360)
+    C -= 360;
+
+  CalcCPID;
   
+  //encoder
   digitalWrite(SS1, LOW);
   PosX = SPI.transfer(0);
   digitalWrite(SS1, HIGH);
   X += PosX;
-
-  lcd.setCursor(0,0); 
-  lcd.print(pressureValue); 
-  lcd.setCursor(8,0); 
-  lcd.print(pressureValue1);
-  lcd.setCursor(0,1); 
-  lcd.print(abs(X));
-  lcd.setCursor(8,1); 
-  lcd.print(pwm_tangan);
 
   if(ps2x.Button(PSB_R1))
   {
@@ -24,14 +30,12 @@ void ReadInput (){
     {
       X = 0;
     }
-    
         if(ps2x.ButtonPressed(PSB_CIRCLE))
     {
       if (pwm_tangan < 220){
         pwm_tangan += 10;
       }
     }
-    
         if(ps2x.ButtonPressed(PSB_TRIANGLE))
     {
       if (pwm_tangan > 0){
@@ -39,7 +43,6 @@ void ReadInput (){
       }
     }
   }
-  
 }
 
 float PressureSensor(float pressure)

@@ -8,28 +8,29 @@
 //==============PIN==============
 //**************Input************* 
 //PS2X 
-#define PS2_DAT        22  //14    
-#define PS2_CMD        24  //15
-#define PS2_SEL        26  //16
-#define PS2_CLK        28  //17
+#define PS2_DAT        23  //14    
+#define PS2_CMD        25  //15
+#define PS2_SEL        27  //16
+#define PS2_CLK        29  //17
 
 PS2X ps2x; // create PS2 Controller Class
 int error = 0;
 byte type = 0;
 byte vibrate = 0;
-int nJoyX;
+int mode = 0;
+int Delay = 50;
+int Pot = 0;
 
-int pwm_tangan;
+int pwm_tangan = 60;
 //Pressure Sensor
-const int pressureInput = A0; //select the analog input pin for the pressure transducer
-const int pressureInput1 = A0; //select the analog input pin for the pressure transducer
-const int pressureZero = 102.4; //analog reading of pressure transducer at 0psi
-const int pressureMax = 921.6; //analog reading of pressure transducer at 100psi
-const int pressuretransducermaxPSI = 100; //psi value of transducer being used
-const int baudRate = 9600; //constant integer to set the baud rate for serial monitor
-const int sensorreadDelay = 250; //constant integer to set the sensor read delay in milliseconds
-float pressureValue = 0; //variable to store the value coming from the pressure transducer
-float pressureValue1 = 0; //variable to store the value coming from the pressure transducer
+const int pressureInput = A0; 
+const int pressureInput1 = A1; 
+const int pressureZero = 102.4; 
+const int pressureMax = 921.6; 
+const int pressuretransducermaxPSI = 100; 
+const int sensorreadDelay = 250; 
+float pressureValue = 0; 
+float pressureValue1 = 0; 
 
 //ENCODER
 const int SS1 = 41;
@@ -38,6 +39,18 @@ int8_t PosX = 0;
 
 //LCD
 LiquidCrystal_I2C lcd(0x3f, 16, 2); //sets the LCD I2C communication address; format(address, columns, rows)
+
+//LIMIT SWITCH
+const int LS1 = 31;
+const int LS2 = 33;
+const int LS3 = 35;
+const int LS4 = 37;
+const int LS5 = 39;
+int ls1 = LOW;
+int ls2 = LOW;
+int ls3 = LOW;
+int ls4 = LOW;
+int ls5 = LOW;
 
 
 //***************Output**************
@@ -56,30 +69,28 @@ const int pwm_speed = 160;
 #define roller_pwm1 10
 #define roller_pwm2 11
 
+//Pneumatic Shooter
+#define relay1 48
+#define relay2 44
+#define relay3 46
 
-//Motor Pelontar
-#define shooter_pwm1 13
-#define shooter_pwm2 12
+//Pneumatic Atas
+#define relay4 44
+#define relay5 42
 
-//Pneumatic
-#define relay1 30
-#define relay2 32
-#define relay3 34
-#define relay4 36
-#define relay5 38
+//Pneumatic Bawah
 #define relay6 40
-#define relay7 42
+#define relay7 38
 
-//servo
-#define p_servo1 23
-#define p_servo3 25
-#define p_servo5 27
-
-Servo servo1, servo3, servo5;
-
-//timing
+//**********************TIMINGS************************//
 int integral = 0;
 int tmp_data = 0;
+unsigned long currentmillis;
+unsigned long prevmillis = 0;
+int inputrate = 50;
+int lcdratemultiplier = 3;
+int lcdcount = 0;
+float elapsedtime = (float)inputrate / 1000;
 
 void setup() {
 
@@ -89,11 +100,11 @@ void setup() {
   error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);
 
   //Encoder
+  delay(300);
   pinMode (SS1, OUTPUT);
   SPI.begin();
   SPI.setClockDivider(SPI_CLOCK_DIV8);
   digitalWrite(SS1, HIGH);
-  delay(300);
   
   //Motor
   delay(300);
@@ -110,11 +121,6 @@ void setup() {
   delay(300);
   pinMode(roller_pwm1, OUTPUT);
   pinMode(roller_pwm2, OUTPUT);
-
-  //Motor Pelontar
-  delay(300);
-  pinMode(shooter_pwm1, OUTPUT);
-  pinMode(shooter_pwm2, OUTPUT);
 
   //Pneumatic
   delay(300);
@@ -133,14 +139,13 @@ void setup() {
   digitalWrite(relay6, HIGH);
   digitalWrite(relay7, HIGH);
 
-  //Servo
-  servo1.attach(p_servo1);
-  servo3.attach(p_servo3);
-  servo5.attach(p_servo5);
-    
-  servo1.write(90);
-  servo3.write(90);
-  servo5.write(90);
+  //LIMIT SWITCH
+  delay(300);
+  pinMode(LS1, INPUT_PULLUP);
+  pinMode(LS2, INPUT_PULLUP);
+  pinMode(LS3, INPUT_PULLUP);
+  pinMode(LS4, INPUT_PULLUP);
+  pinMode(LS5, INPUT_PULLUP);
 
   //LCD
   lcd.init(); //initializes the LCD screen
@@ -149,22 +154,10 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  
-  ps2x.read_gamepad(false, vibrate);
-  
-  nJoyX = ps2x.Analog(PSS_LX);
-  nJoyX = map(nJoyX, 0, 255, -1023, 1023);
-    
-  if(integral < pwm_speed){
-    integral+= 5;
-  }
-  //Serial.println(ps2x.Analog(PSS_RX));
-
-  ReadInput();
-  Gripper();
-  Lengan();
-  Pelempar();
-  MoveRobot();
-  delay(10);
+  currentmillis = millis();
+  if (currentmillis - prevmillis >= inputrate) {
+    MainMenu();
+    ReadInput();
+    prevmillis = currentmillis;
+  }    
 }
