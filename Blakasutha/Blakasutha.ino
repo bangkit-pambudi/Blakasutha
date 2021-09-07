@@ -5,6 +5,7 @@
 #include <Servo.h>
 #include <SPI.h>
 
+
 //==============PIN==============
 //**************Input************* 
 //PS2X 
@@ -18,8 +19,7 @@ int error = 0;
 byte type = 0;
 byte vibrate = 0;
 int mode = 0;
-int Delay = 50;
-int Pot = 0;
+
 
 int pwm_tangan = 60;
 //Pressure Sensor
@@ -55,19 +55,19 @@ int ls5 = LOW;
 
 //***************Output**************
 //Motor DC
-#define pwm_kiri_atas1 2
-#define pwm_kiri_atas2 3
-#define pwm_kiri_bawah1 4
-#define pwm_kiri_bawah2 5
+#define pwm_kanan_atas1 4
+#define pwm_kanan_atas2 5
 #define pwm_kanan_bawah1 6
 #define pwm_kanan_bawah2 7
-#define pwm_kanan_atas1 8
-#define pwm_kanan_atas2 9
+#define pwm_kiri_atas1 8
+#define pwm_kiri_atas2 9
+#define pwm_kiri_bawah1 10
+#define pwm_kiri_bawah2 11
 const int pwm_speed = 160;
 
 //Motor Window
-#define roller_pwm1 10
-#define roller_pwm2 11
+#define roller_pwm1 2
+#define roller_pwm2 3
 
 //Pneumatic Shooter
 #define relay1 48
@@ -92,9 +92,14 @@ int lcdratemultiplier = 3;
 int lcdcount = 0;
 float elapsedtime = (float)inputrate / 1000;
 
-void setup() {
+//*********************AIM****************************//
+int Delay = 50;
+int Pot = 0;
+int16_t Encoder = 0;
+float Tekanan;
 
-  Serial.begin(57600);
+void setup() {
+  Serial.begin(9600);
   //PS2X
   delay(300);  //added delay to give wireless ps2 module some time to startup, before configuring it
   error = ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);
@@ -151,13 +156,14 @@ void setup() {
   lcd.init(); //initializes the LCD screen
   lcd.backlight();
 
+
 }
 
 void loop() {
   currentmillis = millis();
   if (currentmillis - prevmillis >= inputrate) {
-    MainMenu();
     ReadInput();
+    MainMenu();
     prevmillis = currentmillis;
   }    
 }
