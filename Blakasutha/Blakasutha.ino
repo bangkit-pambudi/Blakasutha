@@ -71,16 +71,16 @@ const int pwm_speed = 160;
 
 //Pneumatic Shooter
 #define relay1 48
-#define relay2 44
-#define relay3 46
+#define relay2 46
+#define relay3 44
 
 //Pneumatic Atas
-#define relay4 44
-#define relay5 42
+#define relay4 42
+#define relay5 40
 
 //Pneumatic Bawah
-#define relay6 40
-#define relay7 38
+#define relay6 38
+#define relay7 36
 
 //**********************TIMINGS************************//
 int integral = 0;
