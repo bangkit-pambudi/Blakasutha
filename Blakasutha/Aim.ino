@@ -1,4 +1,4 @@
-void Aim(){
+void Aim(){ //testing aim robot
   if (ps2x.Button(PSB_START)) {
     mode = 0;
   }

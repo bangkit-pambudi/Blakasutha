@@ -97,6 +97,12 @@ int Delay = 50;
 int Pot = 0;
 int16_t Encoder = 0;
 float Tekanan;
+//********************CONFIG*************************//
+// variabel konstanta koreksi motor
+float kfrl = 0;
+float kbcl = 0;
+float kfrr = 0;
+float kbcr = 0; 
 
 void setup() {
   Serial.begin(9600);
