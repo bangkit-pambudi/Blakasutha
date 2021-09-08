@@ -42,7 +42,8 @@ void Aim(){
     Serial.println(Pot);
   }
   Pelempar();
-  MoveRobot();
+  //MoveRobot();
+  Stop();
 }
 
 double regress(double x) {
