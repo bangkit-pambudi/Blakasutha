@@ -48,28 +48,37 @@ if(ps2x.Button(PSB_R2)){
 
 void Pelempar(){
 if(ps2x.Button(PSB_L1)){
-  if( ps2x.ButtonPressed(PSB_TRIANGLE)){ 
+  if( ps2x.ButtonPressed(PSB_TRIANGLE)){
+    Saving(); 
     Serial.println("pelempar 1");
     digitalWrite(relay1, LOW);
-    delay(50);
+    delay(Delay);
   }else{
     digitalWrite(relay1, HIGH);
   } 
   
-  if( ps2x.ButtonPressed(PSB_CIRCLE)){ 
+  if( ps2x.ButtonPressed(PSB_CIRCLE)){
+    Saving(); 
     Serial.println("pelempar 2");
     digitalWrite(relay2, LOW);
-    delay(50);
+    delay(Delay);
   }else{
     digitalWrite(relay2, HIGH);
   } 
   
-  if ( ps2x.ButtonPressed(PSB_CROSS)) { 
+  if ( ps2x.ButtonPressed(PSB_CROSS)) {
+    Saving(); 
     Serial.println("pelempar 3");
     digitalWrite(relay3, LOW);
-    delay(50);
+    delay(Delay);
   }else{
     digitalWrite(relay3, HIGH);
   }
  }
+}
+
+void Saving()
+{
+  Encoder = X;
+  Tekanan = pressureValue;
 }

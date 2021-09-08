@@ -1,4 +1,4 @@
-void Aim(){
+void Aim(){ //testing aim robot
   if (ps2x.Button(PSB_START)) {
     mode = 0;
   }
@@ -18,24 +18,24 @@ void Aim(){
   lcdcount++;
 
   if(ps2x.Button(PSB_R1)){
-    if(ps2x.Button(PSB_PAD_UP)){
+    if(ps2x.ButtonPressed(PSB_PAD_UP)){
       Delay += 10;  
     }
-    if(ps2x.Button(PSB_PAD_DOWN)){
+    if(ps2x.ButtonPressed(PSB_PAD_DOWN)){
       Delay -= 10;
     }
-    if(ps2x.Button(PSB_PAD_LEFT)){
+    if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
       Pot++;  
     }
-    if(ps2x.Button(PSB_PAD_RIGHT)){
+    if(ps2x.ButtonPressed(PSB_PAD_LEFT)){
       Pot--;
     }
   }
 
-  if(ps2x.Button(PSB_L2)){
-    Serial.print(pressureValue);
+  if(ps2x.ButtonPressed(PSB_L2)){
+    Serial.print(Tekanan);
     Serial.print(",");
-    Serial.print(X);
+    Serial.print(Encoder);
     Serial.print(",");
     Serial.print(Delay);
     Serial.print(",");

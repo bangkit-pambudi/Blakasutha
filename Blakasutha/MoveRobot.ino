@@ -1,8 +1,7 @@
 void MoveRobot(){
   if(integral < pwm_speed){
     integral+= 10;
-  }
-  
+  }  
   if(ps2x.Button(PSB_PAD_UP)){
     Serial.println("Robot Maju");
     kiri_atas_acw(integral);
