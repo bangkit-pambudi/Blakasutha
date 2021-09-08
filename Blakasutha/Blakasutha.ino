@@ -21,7 +21,7 @@ byte vibrate = 0;
 int mode = 0;
 
 
-int pwm_tangan = 60;
+int pwm_tangan = 60; //120 untuk angkat
 //Pressure Sensor
 const int pressureInput = A0; 
 const int pressureInput1 = A1; 
