@@ -21,7 +21,7 @@ byte vibrate = 0;
 int mode = 0;
 
 
-int pwm_tangan = 60;
+int pwm_tangan = 60; //120 untuk angkat
 //Pressure Sensor
 const int pressureInput = A0; 
 const int pressureInput1 = A1; 
@@ -97,6 +97,12 @@ int Delay = 50;
 int Pot = 0;
 int16_t Encoder = 0;
 float Tekanan;
+//********************CONFIG*************************//
+// variabel konstanta koreksi motor
+float kfrl = 0;
+float kbcl = 0;
+float kfrr = 0;
+float kbcr = 0; 
 
 void setup() {
   Serial.begin(9600);

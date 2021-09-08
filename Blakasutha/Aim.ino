@@ -1,4 +1,4 @@
-void Aim(){
+void Aim(){ //testing aim robot
   if (ps2x.Button(PSB_START)) {
     mode = 0;
   }
@@ -24,10 +24,10 @@ void Aim(){
     if(ps2x.ButtonPressed(PSB_PAD_DOWN)){
       Delay -= 10;
     }
-    if(ps2x.ButtonPressed(PSB_PAD_LEFT)){
+    if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
       Pot++;  
     }
-    if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
+    if(ps2x.ButtonPressed(PSB_PAD_LEFT)){
       Pot--;
     }
   }
