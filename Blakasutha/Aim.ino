@@ -41,17 +41,27 @@ void Aim(){ //testing aim robot
     Serial.print(",");
     Serial.println(Pot);
   }
+  if(ps2x.ButtonPressed(PSB_R2))
+  {
+    X = 0;
+    Delay = regress_4(pressureValue);
+  }
+
+  Serial.println(Delay);
+  
   Pelempar();
   //MoveRobot();
-  Stop();
+  //Stop();
 }
 
-double regress(double x) {
+
+double regress_4(double x) {
   double terms[] = {
-     4.11,
-    -2.09,
-     2.92
+    -4.5696514909697780e+003,
+     1.8136746675770752e+002,
+    -1.7360965295169812e+000
 };
+  
   double t = 1;
   double r = 0;
   for (double c : terms) {
