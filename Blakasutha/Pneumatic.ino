@@ -1,5 +1,5 @@
 void PneumaticAtas(){
-if(ps2x.Button(PSB_L2)){
+if(ps2x.Button(PSB_L2)){ //Tangan Atas
   if(ps2x.Button(PSB_SQUARE)){
     Serial.println("Sudut 60 derajat");
     digitalWrite(relay4, LOW);

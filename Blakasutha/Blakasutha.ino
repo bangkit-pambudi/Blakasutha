@@ -29,7 +29,7 @@ const int pressureZero = 102.4;
 const int pressureMax = 921.6; 
 const int pressuretransducermaxPSI = 100; 
 const int sensorreadDelay = 250; 
-float pressureValue = 0; 
+double pressureValue = 0; 
 float pressureValue1 = 0; 
 
 //ENCODER
@@ -93,7 +93,7 @@ int lcdcount = 0;
 float elapsedtime = (float)inputrate / 1000;
 
 //*********************AIM****************************//
-int Delay = 50;
+double Delay = 0;
 int Pot = 0;
 int16_t Encoder = 0;
 float Tekanan;
