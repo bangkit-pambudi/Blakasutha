@@ -57,9 +57,9 @@ void Aim(){ //testing aim robot
 
 double regress_4(double x) {
   double terms[] = {
-    -4.5696514909697780e+003,
-     1.8136746675770752e+002,
-    -1.7360965295169812e+000
+    -4.569,
+     1.813,
+    -1.736
 };
   
   double t = 1;
