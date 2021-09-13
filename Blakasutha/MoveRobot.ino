@@ -1,7 +1,11 @@
 void MoveRobot(){
   if(integral < pwm_speed){
     integral+= 10;
-  }  
+  }
+  if (slowMove) {        //Motor move slow if R1 is pressed
+    integral /= 2;
+  }
+  Serial.println(integral);  
   if(ps2x.Button(PSB_PAD_UP)){
     Serial.println("Robot Maju");
     kiri_atas_acw(integral);
@@ -16,19 +20,19 @@ void MoveRobot(){
     kanan_bawah_acw(integral);
     kanan_atas_acw(integral);    
   }else
-   if(ps2x.Button(PSB_R1)){
+   if(ps2x.Button(PSB_R2)){
       if(ps2x.Button(PSB_PAD_RIGHT)){
         Serial.println("Robot Putar Kanan");
-        kiri_atas_acw(integral);
-        kiri_bawah_acw(integral);
-        kanan_bawah_acw(integral);
-        kanan_atas_acw(integral); 
+        kiri_atas_acw(60);
+        kiri_bawah_acw(60);
+        kanan_bawah_acw(60);
+        kanan_atas_acw(60); 
       }else if(ps2x.Button(PSB_PAD_LEFT)){
         Serial.println("Robot Putar Kiri");
-        kiri_atas_cw(integral);
-        kiri_bawah_cw(integral);
-        kanan_bawah_cw(integral);
-        kanan_atas_cw(integral);
+        kiri_atas_cw(60);
+        kiri_bawah_cw(60);
+        kanan_bawah_cw(60);
+        kanan_atas_cw(60);
       }
     }else
   if(ps2x.Button(PSB_PAD_LEFT)){

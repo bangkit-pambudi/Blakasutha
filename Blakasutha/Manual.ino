@@ -17,14 +17,7 @@ void Manual(){ //testing manual
   }
   lcdcount++;
 
-  if(ps2x.Button(PSB_R1)){
-    if(ps2x.ButtonPressed(PSB_CIRCLE)){
-      pwm_tangan += 10;  
-    }
-    if(ps2x.ButtonPressed(PSB_TRIANGLE)){
-      pwm_tangan -= 10;
-    }
-  }
+  slowMove = ps2x.Button(PSB_R1);
   
   PneumaticAtas();
   PneumaticBawah();

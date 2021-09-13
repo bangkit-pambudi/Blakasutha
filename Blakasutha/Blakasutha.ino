@@ -14,11 +14,13 @@
 #define PS2_SEL        27  //16
 #define PS2_CLK        29  //17
 
+//************PSX*****************
 PS2X ps2x; // create PS2 Controller Class
 int error = 0;
 byte type = 0;
 byte vibrate = 0;
 int mode = 0;
+bool slowMove = false;
 
 
 int pwm_tangan = 60; //120 untuk angkat
@@ -146,7 +148,7 @@ void setup() {
   digitalWrite(relay2, HIGH);
   digitalWrite(relay3, HIGH);
   digitalWrite(relay4, HIGH);
-  digitalWrite(relay5, HIGH);
+  digitalWrite(relay5, LOW);
   digitalWrite(relay6, HIGH);
   digitalWrite(relay7, HIGH);
 

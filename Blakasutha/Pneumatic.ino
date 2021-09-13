@@ -2,15 +2,11 @@ void PneumaticAtas(){
 if(ps2x.Button(PSB_L2)){ //Tangan Atas
   if(ps2x.Button(PSB_SQUARE)){
     Serial.println("Sudut 60 derajat");
-    digitalWrite(relay4, LOW);
-  }else{
-    digitalWrite(relay4, HIGH);
+    digitalWrite(relay5, LOW);
   }
 
   if(ps2x.Button(PSB_TRIANGLE)){
     Serial.println("Sudut Vertikal");
-    digitalWrite(relay5, LOW);
-  }else{
     digitalWrite(relay5, HIGH);
   }
  }
@@ -34,12 +30,12 @@ if(ps2x.Button(PSB_R2)){
 
   if(ps2x.Button(PSB_CROSS)) {
     Serial.println("Motor memutar ke belakang");
-    analogWrite(roller_pwm1, pwm_tangan);
+    analogWrite(roller_pwm1, 60);
     analogWrite(roller_pwm2, 0);
   }else if (ps2x.Button(PSB_CIRCLE)){
     Serial.println("Motor memutar ke depan");
     analogWrite(roller_pwm1, 0);
-    analogWrite(roller_pwm2, pwm_tangan);  
+    analogWrite(roller_pwm2, 120);  
   }else{
     analogWrite(roller_pwm1, 0);
     analogWrite(roller_pwm2, 0);}

@@ -25,6 +25,7 @@ void Aim(){ //testing aim robot
       Delay -= 10;
     }
     if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
+      Delay = 0;
       Pot++;  
     }
     if(ps2x.ButtonPressed(PSB_PAD_LEFT)){
@@ -43,33 +44,41 @@ void Aim(){ //testing aim robot
   }
   if(ps2x.ButtonPressed(PSB_R2))
   {
-    if(ps2x.ButtonPressed(PSB_PAD_UP)){
-        X = 0;
-        Delay = regress_4(pressureValue);
-    }
-    if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
-        X = 0;
-        Delay = regress_2(pressureValue);
-    }
-    if(ps2x.ButtonPressed(PSB_PAD_DOWN)){
-        X = 0;
-        Delay = regress_1(pressureValue);
-    }
+    X = 0;
+    Delay = 0;
+    Delay = regress_0(pressureValue);
   }
 
-  Serial.println(Delay);
+  //Serial.println(Delay);
   
   Pelempar();
   //MoveRobot();
   //Stop();
 }
 
+double regress_0(double x) {
+  double terms[] = {
+    -4.5696514909697780e+003,
+     1.8136746675770752e+002,
+    -1.7360965295169812e+000
+};
+  
+  size_t csz = sizeof terms / sizeof *terms;
+  
+  double t = 1;
+  double r = 0;
+  for (int i = 0; i < csz;i++) {
+    r += terms[i] * t;
+    t *= x;
+  }
+  return r;
+}
 
 double regress_4(double x) {
   double terms[] = {
-    -4.569,
-     1.813,
-    -1.736
+    -4.5696514909697780e+003,
+     1.8136746675770752e+002,
+    -1.7360965295169812e+000
 };
   
   double t = 1;
