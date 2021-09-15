@@ -101,10 +101,11 @@ int16_t Encoder = 0;
 float Tekanan;
 //********************CONFIG*************************//
 // variabel konstanta koreksi motor
-float kfrl = 0;
-float kbcl = 0;
-float kfrr = 0;
-float kbcr = 0; 
+int kfrl[] = {0,0,0,35};
+int kbcl[] = {0,0,5,0};
+int kfrr[] = {0,0,5,0};
+int kbcr[] = {0,0,0,35};
+int adjust = 0; 
 
 void setup() {
   Serial.begin(9600);

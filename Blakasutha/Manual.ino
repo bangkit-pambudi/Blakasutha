@@ -12,7 +12,7 @@ void Manual(){ //testing manual
     lcd.setCursor(0, 1);
     lcd.print(pwm_tangan);
     lcd.setCursor(8, 1);
-    lcd.print(X);
+    lcd.print(pressureValue1);
     lcdcount = 0;
   }
   lcdcount++;
