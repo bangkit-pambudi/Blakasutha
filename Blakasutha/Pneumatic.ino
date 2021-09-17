@@ -44,29 +44,26 @@ if(ps2x.Button(PSB_R2)){
 
 void Pelempar(){
 if(ps2x.Button(PSB_L1)){
-  if( ps2x.ButtonPressed(PSB_TRIANGLE)){
-    Saving(); 
+  if( ps2x.ButtonPressed(PSB_TRIANGLE)){ 
     //Serial.println("pelempar 1");
     digitalWrite(relay1, LOW);
-    delay(Delay);
+    delay(Delay[0]);
   }else{
     digitalWrite(relay1, HIGH);
   } 
   
-  if( ps2x.ButtonPressed(PSB_CIRCLE)){
-    Saving(); 
+  if( ps2x.ButtonPressed(PSB_CIRCLE)){ 
     //Serial.println("pelempar 2");
     digitalWrite(relay2, LOW);
-    delay(Delay);
+    delay(Delay[1]);
   }else{
     digitalWrite(relay2, HIGH);
   } 
   
   if ( ps2x.ButtonPressed(PSB_CROSS)) {
-    Saving(); 
     //Serial.println("pelempar 3");
     digitalWrite(relay3, LOW);
-    delay(Delay);
+    delay(Delay[2]);
   }else{
     digitalWrite(relay3, HIGH);
   }

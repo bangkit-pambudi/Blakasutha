@@ -6,122 +6,39 @@ void Aim(){ //testing aim robot
   if (lcdcount > lcdratemultiplier) {
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print(Delay);
+    lcd.print(adjust1);
     lcd.setCursor(8, 0);
-    lcd.print(Pot);
+    lcd.print(Delay[0]);
     lcd.setCursor(0, 1);
-    lcd.print(pressureValue);
+    lcd.print(Delay[1]);
     lcd.setCursor(8, 1);
-    lcd.print(X);
+    lcd.print(Delay[2]);
     lcdcount = 0;
   }
   lcdcount++;
 
   if(ps2x.Button(PSB_R1)){
     if(ps2x.ButtonPressed(PSB_PAD_UP)){
-      Delay += 10;  
+      Delay[adjust1] += 5;  
     }
     if(ps2x.ButtonPressed(PSB_PAD_DOWN)){
-      Delay -= 10;
+      Delay[adjust1] -= 5;
+    }
+  }
+
+  if(ps2x.Button(PSB_R2)){
+    if(ps2x.ButtonPressed(PSB_PAD_UP)){
+      adjust1 = 0;  
+    }
+    if(ps2x.ButtonPressed(PSB_PAD_DOWN)){
+      adjust1 = 1;
     }
     if(ps2x.ButtonPressed(PSB_PAD_RIGHT)){
-      Delay = 0;
-      Pot++;  
-    }
-    if(ps2x.ButtonPressed(PSB_PAD_LEFT)){
-      Pot--;
+      adjust1 = 2;
     }
   }
-
-  if(ps2x.ButtonPressed(PSB_L2)){
-    Serial.print(Tekanan);
-    Serial.print(",");
-    Serial.print(Encoder);
-    Serial.print(",");
-    Serial.print(Delay);
-    Serial.print(",");
-    Serial.println(Pot);
-  }
-  if(ps2x.ButtonPressed(PSB_R2))
-  {
-    X = 0;
-    Delay = 0;
-    Delay = regress_0(pressureValue);
-  }
-
-  //Serial.println(Delay);
   
   Pelempar();
   //MoveRobot();
   //Stop();
-}
-
-double regress_0(double x) {
-  double terms[] = {
-    -4.5696514909697780e+003,
-     1.8136746675770752e+002,
-    -1.7360965295169812e+000
-};
-  
-  size_t csz = sizeof terms / sizeof *terms;
-  
-  double t = 1;
-  double r = 0;
-  for (int i = 0; i < csz;i++) {
-    r += terms[i] * t;
-    t *= x;
-  }
-  return r;
-}
-
-double regress_4(double x) {
-  double terms[] = {
-    -4.5696514909697780e+003,
-     1.8136746675770752e+002,
-    -1.7360965295169812e+000
-};
-  
-  double t = 1;
-  double r = 0;
-  for (double c : terms) {
-    r += c * t;
-    t *= x;
-  }
-  return r;
-}
-
-double regress_2(double x) {
-  double terms[] = {
-    -1.1461195242370218e+007,
-     1.0779281696440135e+006,
-    -3.7944196867966908e+004,
-     5.9255845541379961e+002,
-    -3.4641717499497831e+000
-};
-  
-  double t = 1;
-  double r = 0;
-  for (double c : terms) {
-    r += c * t;
-    t *= x;
-  }
-  return r;
-}
-
-double regress_1(double x) {
-  double terms[] = {
-    -4.7894934899005498e+005,
-     5.3961466330134543e+004,
-    -2.2720411681854780e+003,
-     4.2388752175912948e+001,
-    -2.9571727552298488e-001
-};
-  
-  double t = 1;
-  double r = 0;
-  for (double c : terms) {
-    r += c * t;
-    t *= x;
-  }
-  return r;
 }

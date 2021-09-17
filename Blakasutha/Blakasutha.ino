@@ -95,7 +95,8 @@ int lcdcount = 0;
 float elapsedtime = (float)inputrate / 1000;
 
 //*********************AIM****************************//
-double Delay = 0;
+int Delay[] = {150,125,0};
+int adjust1 = 0;
 int Pot = 0;
 int16_t Encoder = 0;
 float Tekanan;
