@@ -95,11 +95,13 @@ int lcdcount = 0;
 float elapsedtime = (float)inputrate / 1000;
 
 //*********************AIM****************************//
-int Delay[] = {150,125,0};
+int Delay1[] = {150,0};
+int Delay2[] = {125,0};
+int Delay3[] = {0,0};
 int adjust1 = 0;
-int Pot = 0;
 int16_t Encoder = 0;
 float Tekanan;
+
 //********************CONFIG*************************//
 // variabel konstanta koreksi motor
 int kfrl[] = {0,0,0,35};
