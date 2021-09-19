@@ -29,7 +29,8 @@ const int pressureInput = A0;
 const int pressureInput1 = A1; 
 const int pressureZero = 102.4; 
 const int pressureMax = 921.6; 
-const int pressuretransducermaxPSI = 100; 
+const int pressuretransducermaxPSI = 100;
+const int pressuretransducermaxPSI1 = 200; 
 const int sensorreadDelay = 250; 
 double pressureValue = 0; 
 float pressureValue1 = 0; 
@@ -78,7 +79,6 @@ const int pwm_speed = 160;
 
 //Pneumatic Atas
 #define relay4 42
-#define relay5 40
 
 //Pneumatic Bawah
 #define relay6 38
@@ -95,9 +95,9 @@ int lcdcount = 0;
 float elapsedtime = (float)inputrate / 1000;
 
 //*********************AIM****************************//
-int Delay1[] = {150,0};
-int Delay2[] = {125,0};
-int Delay3[] = {0,0};
+int Delay1[] = {170,170};
+int Delay2[] = {160,125};
+int Delay3[] = {160,130};
 int adjust1 = 0;
 int16_t Encoder = 0;
 float Tekanan;
@@ -105,8 +105,8 @@ float Tekanan;
 //********************CONFIG*************************//
 // variabel konstanta koreksi motor
 int kfrl[] = {0,0,0,35};
-int kbcl[] = {0,0,5,0};
-int kfrr[] = {0,0,5,0};
+int kbcl[] = {0,0,15,0};
+int kfrr[] = {0,0,0,0};
 int kbcr[] = {0,0,0,35};
 int adjust = 0; 
 
@@ -145,14 +145,12 @@ void setup() {
   pinMode(relay2, OUTPUT);
   pinMode(relay3, OUTPUT);
   pinMode(relay4, OUTPUT);
-  pinMode(relay5, OUTPUT);
   pinMode(relay6, OUTPUT);
   pinMode(relay7, OUTPUT);
   digitalWrite(relay1, HIGH);
   digitalWrite(relay2, HIGH);
   digitalWrite(relay3, HIGH);
   digitalWrite(relay4, HIGH);
-  digitalWrite(relay5, LOW);
   digitalWrite(relay6, HIGH);
   digitalWrite(relay7, HIGH);
 

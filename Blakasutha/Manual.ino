@@ -10,18 +10,35 @@ void Manual(){ //testing manual
     lcd.setCursor(8, 0);
     lcd.print(pressureValue);
     lcd.setCursor(0, 1);
-    lcd.print(pwm_tangan);
+    lcd.print(adjust1);
     lcd.setCursor(8, 1);
     lcd.print(pressureValue1);
     lcdcount = 0;
   }
   lcdcount++;
 
-  slowMove = ps2x.Button(PSB_R1);
+//  slowMove = ps2x.Button();
   
   PneumaticAtas();
+  Konfigurasi();
   PneumaticBawah();
   Pelempar();
   MoveRobot();
   
+}
+
+void Konfigurasi()
+{
+  if(ps2x.Button(PSB_R1))
+  {
+    if(ps2x.Button(PSB_TRIANGLE))
+    {
+      adjust1 = 0;
+    }
+
+    if(ps2x.Button(PSB_CIRCLE))
+    {
+      adjust1 = 1;
+    }
+  }
 }

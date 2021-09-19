@@ -3,8 +3,8 @@ void ReadInput (){
   ps2x.read_gamepad(false, vibrate);
   
   //pneumatic sensor
-  pressureValue = PressureSensor(analogRead(pressureInput)); 
-  pressureValue1 = PressureSensor(analogRead(pressureInput1)); 
+  pressureValue = PressureSensor(analogRead(pressureInput),pressuretransducermaxPSI); 
+  pressureValue1 = PressureSensor(analogRead(pressureInput1),pressuretransducermaxPSI1); 
 
   //Encoder SPI
   digitalWrite(SS1, LOW);
@@ -21,8 +21,8 @@ void ReadInput (){
   
 }
 
-float PressureSensor(float pressure)
+float PressureSensor(float X, const int Y)
 {
-  pressure = ((pressure-pressureZero)*pressuretransducermaxPSI)/(pressureMax-pressureZero);
-  return pressure;
+  X = ((X-pressureZero)*Y)/(pressureMax-pressureZero);
+  return X;
 }

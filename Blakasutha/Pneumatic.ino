@@ -2,12 +2,12 @@ void PneumaticAtas(){
 if(ps2x.Button(PSB_L2)){ //Tangan Atas
   if(ps2x.Button(PSB_SQUARE)){
     Serial.println("Sudut 60 derajat");
-    digitalWrite(relay5, LOW);
+    digitalWrite(relay4, LOW);
   }
 
   if(ps2x.Button(PSB_TRIANGLE)){
     Serial.println("Sudut Vertikal");
-    digitalWrite(relay5, HIGH);
+    digitalWrite(relay4, HIGH);
   }
  }
 }
@@ -17,15 +17,11 @@ if(ps2x.Button(PSB_R2)){
  if(ps2x.Button(PSB_SQUARE)){ //R2 + Kotak
     Serial.println("Tangan Turun");
     digitalWrite(relay6, LOW);
-  }else{
-    digitalWrite(relay6, HIGH);
   } 
 
    if(ps2x.Button(PSB_TRIANGLE)){ //R2 + Segitiga
     Serial.println("Tangan Naik");
-    digitalWrite(relay7, LOW);
-  }else{
-    digitalWrite(relay7, HIGH);
+    digitalWrite(relay6, HIGH);
   }
 
   if(ps2x.Button(PSB_CROSS)) {
