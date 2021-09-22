@@ -56,3 +56,11 @@ void MoveRobot(){
     integral = 0;
   }
 }
+
+void maju()
+{
+    kiri_atas_acw(60);
+    kiri_bawah_acw(60);
+    kanan_bawah_cw(60);
+    kanan_atas_cw(60);
+}

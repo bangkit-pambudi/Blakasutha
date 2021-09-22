@@ -20,12 +20,13 @@ void Manual(){ //testing manual
 //  slowMove = ps2x.Button();
   
   PneumaticAtas();
-  Konfigurasi();
   PneumaticBawah();
   Pelempar();
-  MoveRobot();
-  
-}
+//  if (ps2x.ButtonPressed(PSB_R1)){
+//      autonomus();  
+//  }else {
+//    MoveRobot();
+//  }
 
 void Konfigurasi()
 {
