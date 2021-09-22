@@ -111,7 +111,7 @@ int kbcr[] = {0,0,0,30};
 int adjust = 0; 
 
 //Autonomus
-int Auto[] = {1000,1000,500,1000,1000,700,1000,2000};
+int Auto[] = {1000,1000,500,1000,1000,700,1000,2300};
 int index = 0;
 void setup() {
   Serial.begin(9600);
