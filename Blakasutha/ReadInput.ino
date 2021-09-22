@@ -4,9 +4,7 @@ void ReadInput(){
   
   //pneumatic sensor
   pressureValue = PressureSensor(analogRead(pressureInput),pressuretransducermaxPSI); 
-  pressureValue1 = PressureSensor(analogRead(pressureInput1),pressuretransducermaxPSI1);
-
- 
+  pressureValue1 = PressureSensor(analogRead(pressureInput1),pressuretransducermaxPSI1); 
 
   //Encoder SPI
   digitalWrite(SS1, LOW);
