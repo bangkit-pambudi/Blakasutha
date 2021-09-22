@@ -22,11 +22,15 @@ void Manual(){ //testing manual
   PneumaticAtas();
   PneumaticBawah();
   Pelempar();
-//  if (ps2x.ButtonPressed(PSB_R1)){
-//      autonomus();  
-//  }else {
-//    MoveRobot();
-//  }
+  if (ps2x.ButtonPressed(PSB_R1))
+  {
+    autonomus();
+  }
+  else
+  {
+    MoveRobot();
+  }
+}
 
 void Konfigurasi()
 {
