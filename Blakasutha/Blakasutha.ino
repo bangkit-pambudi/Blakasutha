@@ -106,12 +106,12 @@ float Tekanan;
 // variabel konstanta koreksi motor
 int kfrl[] = {0,0,0,35};
 int kbcl[] = {0,0,15,0};
-int kfrr[] = {0,0,0,0};
-int kbcr[] = {0,0,0,35};
+int kfrr[] = {0,0,0,-10};
+int kbcr[] = {0,0,0,30};
 int adjust = 0; 
 
 //Autonomus
-int Auto[] = {1000,1000,500,1000,1000,700,1000,1000};
+int Auto[] = {1000,1000,500,1000,1000,700,1000,2000};
 int index = 0;
 void setup() {
   Serial.begin(9600);
