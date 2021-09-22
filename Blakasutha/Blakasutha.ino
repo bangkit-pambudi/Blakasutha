@@ -32,7 +32,7 @@ const int pressureMax = 921.6;
 const int pressuretransducermaxPSI = 100;
 const int pressuretransducermaxPSI1 = 200; 
 const int sensorreadDelay = 250; 
-double pressureValue = 0; 
+float pressureValue = 0; 
 float pressureValue1 = 0; 
 
 //ENCODER
@@ -96,7 +96,7 @@ float elapsedtime = (float)inputrate / 1000;
 
 //*********************AIM****************************//
 int Delay1[] = {170,170};
-int Delay2[] = {160,125};
+int Delay2[] = {125,125};
 int Delay3[] = {160,130};
 int adjust1 = 0;
 int16_t Encoder = 0;
