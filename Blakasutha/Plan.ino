@@ -35,11 +35,11 @@ void Plan(){
 
   if(ps2x.ButtonPressed(PSB_TRIANGLE))
   {
-    autonomus();
+    autonomus1();
   }
 }
 
-void autonomus()
+void autonomus1()
 {
   
   digitalWrite(relay4, LOW);
@@ -48,19 +48,53 @@ void autonomus()
   delay(Auto[1]);
   Stop();
   delay(Auto[2]);
-  digitalWrite(relay6, LOW);
+  digitalWrite(relay4, HIGH);
   delay(Auto[3]);
+  digitalWrite(relay6, LOW);
   analogWrite(roller_pwm1, 100);
   analogWrite(roller_pwm2, 0);
   delay(Auto[4]);
   analogWrite(roller_pwm1, 0);
   analogWrite(roller_pwm2, 0);
-  digitalWrite(relay4, HIGH);
   digitalWrite(relay6, HIGH);
   delay(Auto[6]);
   analogWrite(roller_pwm1, 0);
-  analogWrite(roller_pwm2, 120);
+  analogWrite(roller_pwm2, 180);
   delay(Auto[7]);
+  ls1 = digitalRead(LS1);
+  while(ls1==LOW)
+  {
+    ls1 = digitalRead(LS1);
+//    Serial.println("Kontol");
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 120);
+  }
+//  delay(Auto[5]);
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 0);
+}
+
+void autonomus2(){
+  digitalWrite(relay6, LOW);
+  analogWrite(roller_pwm1, 100);
+  analogWrite(roller_pwm2, 0);
+  delay(Auto[4]);
   analogWrite(roller_pwm1, 0);
   analogWrite(roller_pwm2, 0);
+  digitalWrite(relay6, HIGH);
+  delay(Auto[6]);
+  analogWrite(roller_pwm1, 0);
+  analogWrite(roller_pwm2, 180);
+  //delay(Auto[7]);
+  ls1 = digitalRead(LS1);
+  while(ls1==LOW)
+  {
+    ls1 = digitalRead(LS1);
+//    Serial.println("Kontol");
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 120);
+  }
+//  delay(Auto[5]);
+    analogWrite(roller_pwm1, 0);
+    analogWrite(roller_pwm2, 0);
 }

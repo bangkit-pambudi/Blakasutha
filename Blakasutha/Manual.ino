@@ -22,9 +22,12 @@ void Manual(){ //testing manual
   PneumaticAtas();
   PneumaticBawah();
   Pelempar();
-  if (ps2x.ButtonPressed(PSB_R1))
-  {
-    autonomus();
+  if (ps2x.Button(PSB_R1))
+  { if (ps2x.ButtonPressed(PSB_TRIANGLE)) {
+    autonomus1();
+  }if (ps2x.ButtonPressed(PSB_CIRCLE)){
+   autonomus2(); 
+  }
   }
   else
   {

@@ -73,4 +73,6 @@ void Config(){ //testing konstanta
     }
   }
   
+  
+  
 }

@@ -26,7 +26,7 @@ if(ps2x.Button(PSB_R2)){
 
   if(ps2x.Button(PSB_CROSS)) {
     Serial.println("Motor memutar ke belakang");
-    analogWrite(roller_pwm1, 60);
+    analogWrite(roller_pwm1, 100);
     analogWrite(roller_pwm2, 0);
   }else if (ps2x.Button(PSB_CIRCLE)){
     Serial.println("Motor memutar ke depan");

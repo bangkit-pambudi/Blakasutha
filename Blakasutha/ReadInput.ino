@@ -18,6 +18,7 @@ void ReadInput(){
   ls3 = digitalRead(LS3);
   ls4 = digitalRead(LS4);
   ls5 = digitalRead(LS5);
+  Serial.println(ls1);
   
 }
 
