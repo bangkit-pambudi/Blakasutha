@@ -61,6 +61,7 @@ void autonomus1()
   Stop();
   while (currentMillis1 - previousMillis1 < Auto[2]) {
     ReadInput();
+    MoveRobot();
     currentMillis1 = millis();
   }
   previousMillis1 = currentMillis1;
@@ -75,6 +76,7 @@ void autonomus1()
   analogWrite(roller_pwm2, 0);
   while (currentMillis1 - previousMillis1 < Auto[4]) {
     ReadInput();
+    MoveRobot();
     currentMillis1 = millis();
   }
   previousMillis1 = currentMillis1;
@@ -90,6 +92,7 @@ void autonomus1()
   analogWrite(roller_pwm2, 180);
   while (currentMillis1 - previousMillis1 < Auto[7]) {
     ReadInput();
+    MoveRobot();
     currentMillis1 = millis();
   }
   
@@ -102,6 +105,7 @@ void autonomus1()
     analogWrite(roller_pwm1, 0);
     analogWrite(roller_pwm2, 120);
     ReadInput();
+    MoveRobot();
   }
 //  delay(Auto[5]);
     analogWrite(roller_pwm1, 0);
