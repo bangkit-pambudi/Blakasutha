@@ -2,12 +2,12 @@ void PneumaticAtas(){
 if(ps2x.Button(PSB_L2)){ //Tangan Atas
   if(ps2x.Button(PSB_SQUARE)){
     Serial.println("Sudut 60 derajat");
-    digitalWrite(relay4, LOW);
+    digitalWrite(relay4, HIGH);
   }
 
   if(ps2x.Button(PSB_TRIANGLE)){
     Serial.println("Sudut Vertikal");
-    digitalWrite(relay4, HIGH);
+    digitalWrite(relay4, LOW);
   }
  }
 }
